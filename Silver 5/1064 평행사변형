@@ -1,1 +1,48 @@
+### 평행사변형
 
+<br>
+문제 https://www.acmicpc.net/problem/1064
+<br>
+<br>
+
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<math.h>
+#include<stdio.h>
+#include<math.h>
+double a, b, temp;
+void swap(double* a, double*b) {
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    double x1, y1, x2, y2, x3, y3, one,two,three;
+    scanf("%lf %lf %lf %lf %lf %lf", &x1, &y1, &x2, &y2, &x3, &y3);
+
+    if ((y2 - y1) * (x3 - x1) == (y3 - y1) * (x2 - x1)) {
+        printf("-1.0");
+        return 0;
+    }
+
+    else {
+        one = sqrt((x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2));
+        two = sqrt((x1 - x3) * (x1 - x3) + (y1 - y3) * (y1 - y3));
+        three = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+        if (three > two) {
+            swap(&two, &three);
+        }
+        if (two > one) {
+            swap(&one, &two);
+        }
+        if (three > two) {
+            swap(&two, &three);
+        }
+        printf("%.10f", 2 * (one - three));
+    }
+    
+}
+
+#### comment<br>
+평행사변형에서 중요한 점은 3개의 점이 주어졌을때 만들어질 수 있는 평행사변형은 총 3개이다.
