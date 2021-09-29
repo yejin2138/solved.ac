@@ -1,0 +1,40 @@
+### 다리놓기
+
+<br>
+문제 https://www.acmicpc.net/problem/1010
+<br>
+<br>
+
+
+```C
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+
+int han_num(int n) {
+	int hun, ten, one,i;
+	int count = 0;
+	if (n < 100)
+	{
+		return n;
+	}
+	else
+	{
+		for (i = 100; i <= n; i++) {
+			hun = i / 100;
+			ten = (i / 10) % 10;
+			one = i % 10;
+			
+			if ((hun - ten) == (ten - one)) {
+				count++;
+			}
+		}
+		return (99 + count);
+	}
+}
+int main() {
+	int num,result;
+	scanf("%d", &num);
+	result = han_num(num);
+	printf("%d", result);
+}
+```
